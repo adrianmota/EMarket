@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.EMarket", "EMarket\WebApp.EMarket.csproj", "{C6F13646-9FB0-4571-A14D-C4FD27FBD07D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{19A2B3CC-F561-4390-98E9-BAF9A68EE040}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{27204209-DBAF-4B9B-9EF5-C3CF239E91A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{30F1141B-44D5-4413-9174-ED81EB53E422}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{7ACD0226-6677-4A52-937B-6C9A1B902301}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMarket.Core.Domain", "EMarket.Core.Domain\EMarket.Core.Domain.csproj", "{D7B5167A-F5AE-41D3-97AB-012A04E536AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMarket.Core.Application", "EMarket.Core.Application\EMarket.Core.Application.csproj", "{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMarket.Infrastructure.Persistence", "EMarket.Infrastructure.Persistence\EMarket.Infrastructure.Persistence.csproj", "{8C95932C-6B12-4A97-B58F-52B87C903EC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6F13646-9FB0-4571-A14D-C4FD27FBD07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F13646-9FB0-4571-A14D-C4FD27FBD07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F13646-9FB0-4571-A14D-C4FD27FBD07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F13646-9FB0-4571-A14D-C4FD27FBD07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B5167A-F5AE-41D3-97AB-012A04E536AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B5167A-F5AE-41D3-97AB-012A04E536AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B5167A-F5AE-41D3-97AB-012A04E536AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B5167A-F5AE-41D3-97AB-012A04E536AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C95932C-6B12-4A97-B58F-52B87C903EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C95932C-6B12-4A97-B58F-52B87C903EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C95932C-6B12-4A97-B58F-52B87C903EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C95932C-6B12-4A97-B58F-52B87C903EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6F13646-9FB0-4571-A14D-C4FD27FBD07D} = {7ACD0226-6677-4A52-937B-6C9A1B902301}
+		{27204209-DBAF-4B9B-9EF5-C3CF239E91A9} = {19A2B3CC-F561-4390-98E9-BAF9A68EE040}
+		{30F1141B-44D5-4413-9174-ED81EB53E422} = {19A2B3CC-F561-4390-98E9-BAF9A68EE040}
+		{7ACD0226-6677-4A52-937B-6C9A1B902301} = {19A2B3CC-F561-4390-98E9-BAF9A68EE040}
+		{D7B5167A-F5AE-41D3-97AB-012A04E536AF} = {27204209-DBAF-4B9B-9EF5-C3CF239E91A9}
+		{EF55C3CA-E00C-47C3-AEF8-67DBB92CB793} = {27204209-DBAF-4B9B-9EF5-C3CF239E91A9}
+		{8C95932C-6B12-4A97-B58F-52B87C903EC4} = {30F1141B-44D5-4413-9174-ED81EB53E422}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9B2071A-2408-4371-A778-F88FBD492CFB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,44 @@
+﻿@using EMarket.Core.Application.ViewModels.Categories
+@model List<CategoryViewModel>
+@{
+    ViewData["Title"] = "Categorías";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a class="btn btn-outline-success w-100" asp-controller="Category" asp-action="Create">Crear Categoría</a>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model == null || Model.Count() == 0)
+        {
+            <h4>No hay categorías</h4>
+        }
+        else
+        {
+            foreach (CategoryViewModel category in Model)
+            {
+                <div class="col-4 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-black">
+                            <h4>@category.Name</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>@category.Description</p>
+                            <p><b>Cantidad de anuncios:</b> @category.AdvertisementsQuantity</p>
+                            <p><b>Usuarios:</b> @category.OwnersOfAdsQuantity</p>
+                            <div class="d-flex flex-row justify-content-end">
+                                <div class="btn-group-sm">
+                                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-outline-warning">Editar</a>
+                                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-outline-danger">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

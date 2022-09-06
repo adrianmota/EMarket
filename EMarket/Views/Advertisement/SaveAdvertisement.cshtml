@@ -1,0 +1,102 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements
+@model SaveAdvertisementViewModel
+@{
+    bool editMode = !(Model.Id == 0);
+    string title = editMode ? $"Editando anuncio {Model.Name}" : "Creando anuncio";
+    string action = editMode ? "Edit" : "Create";
+    ViewData["Title"] = title;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card shadow-sm">
+                @if (Model.Categories == null || Model.Categories.Count() == 0)
+                {
+                    <div class="card-header bg-black text-white">
+                        <h4 class="text-center">No válido</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>No se pueden crear anuncios porque no hay categorías</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-header bg-black text-white">
+                        <h4 class="text-center">@title</h4>
+                    </div>
+                    <div class="card-body">
+                        @if (editMode)
+                        {
+                            <div class="d-flex flex-row">
+                                <img src="@Model.ImageUrl1" class="img-fluid w-50 custom-image-height" />
+                                @if (Model.ImageUrl2 != null)
+                                {
+                                    <img src="@Model.ImageUrl2" class="img-fluid w-50 custom-image-height" />
+                                }
+                            </div>
+                            <div class="d-flex flex-row">
+                                @if (Model.ImageUrl3 != null)
+                                {
+                                    <img src="@Model.ImageUrl3" class="img-fluid w-50 custom-image-height" />
+                                }
+
+                                @if (Model.ImageUrl4 != null)
+                                {
+                                    <img src="@Model.ImageUrl4" class="img-fluid w-50 custom-image-height" />
+                                }
+                            </div>
+                        }
+                        <form method="post" enctype="multipart/form-data" asp-controller="Advertisement" asp-action="@action">
+                            @Html.ValidationSummary(false, "", new {@class = "text-danger"})
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">Nombre del artículo</label>
+                                <input asp-for="Name" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label">Descripción del artículo</label>
+                                <input asp-for="Description" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ImageFile1" class="form-label">Imagen 1</label>
+                                @if (editMode)
+                                {
+                                    <input asp-for="ImageFile1" class="form-control" />
+                                }
+                                else
+                                {
+                                    <input required asp-for="ImageFile1" class="form-control" />
+                                }
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ImageFile2" class="form-label">Imagen 2</label>
+                                <input asp-for="ImageFile2" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ImageFile3" class="form-label">Imagen 3</label>
+                                <input asp-for="ImageFile3" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ImageFile4" class="form-label">Imagen 4</label>
+                                <input asp-for="ImageFile4" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Price" class="form-label">Precio</label>
+                                <input asp-for="Price" type="number" step="any" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="CategoryId" class="form-label">Categoría</label>
+                                <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Name"))" class="form-select">
+                                    <option value="0">Seleccione una categoría</option>
+                                </select>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <a asp-controller="Advertisement" asp-action="Index" class="btn btn-secondary">Volver atrás</a>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

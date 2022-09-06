@@ -1,0 +1,24 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements
+@model SaveAdvertisementViewModel
+@{
+    ViewData["Title"] = "Borrar anuncio";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4>¿Está seguro que desea borrar el anuncio @Model.Name?</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Advertisement" asp-action="Delete">
+                        <input type="hidden" asp-for="Id"/>
+                        <button type="submit" class="btn btn-danger">Aceptar</button>
+                        <a class="btn btn-secondary" asp-controller="Advertisement" asp-action="Index">Volver atrás</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

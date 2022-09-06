@@ -1,0 +1,77 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements
+@model AdvertisementViewModel
+@{
+    ViewData["Title"] = "Detalles de anuncio";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="text-center">Detalles de anuncio</h4>
+                </div>
+                <div class="card-body">
+                    <div id="carouselExampleControls" class="carousel slide text-center" data-bs-ride="carousel">
+                        <div class="carousel-inner h-380">
+                            <div class="carousel-item active">
+                                <img src="@Model.ImageUrl1" class="d-block w-100 h-380" />
+                            </div>
+                            @if (Model.ImageUrl2 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img src="@Model.ImageUrl2" class="d-block w-100 h-380" />
+                                </div>
+                            }
+
+                            @if (Model.ImageUrl3 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img src="@Model.ImageUrl3" class="d-block w-100 h-380" />
+                                </div>
+                            }
+
+                            @if (Model.ImageUrl4 != null)
+                            {
+                                <div class="carousel-item">
+                                    <img src="@Model.ImageUrl4" class="d-block w-100 h-380" />
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <hr />
+                    <h4 class="mb-3"><strong>Artículo</strong></h4>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p><b>Nombre:</b> @Model.Name</p>
+                        <p><b>Descripción:</b> @Model.Description</p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p><b>Categoría:</b> @Model.CategoryName</p>
+                        <p><b>Precio:</b> $@Model.Price</p>
+                    </div>
+                    <div>
+                        <p><b>Fecha de publicación:</b> @Model.DatePublished</p>
+                    </div>
+                    <hr />
+                    <h4 class="mb-3"><strong>Anunciante</strong></h4>
+                    <div>
+                        <p><b>Nombre:</b> @Model.AdvertiserName</p>
+                        <p><b>Email:</b> @Model.AdvertiserEmail</p>
+                    </div>
+                    <div>
+                        <p><b>Teléfono:</b> @Model.AdvertiserPhone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,45 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements
+@model List<AdvertisementViewModel>
+@{
+    ViewData["Title"] = "Mis anuncios";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="Advertisement" asp-action="Create" class="btn btn-outline-success w-100">Agregar anuncio</a>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model == null || Model.Count() == 0)
+        {
+            <h4>No hay anuncios</h4>
+        }
+        else
+        {
+            foreach (AdvertisementViewModel advertisement in Model)
+            {
+                <div class="col-4 mb-3">
+                    <div class="card shadow-sm">
+                        <img class="bd-placeholder-img card-img-top advertisement-image-height" src="@advertisement.ImageUrl1">
+
+                        <div class="card-body">
+                            <strong>@advertisement.Name</strong>
+                            <p>@advertisement.Description</p>
+                            <p>@advertisement.CategoryName</p>
+
+                            <div class="d-flex flex-row justify-content-between">
+                                <p class="text-black">$@advertisement.Price</p>
+                                <div class="btn-group-sm">
+                                    <a asp-controller="Advertisement" asp-action="Edit" asp-route-id="@advertisement.Id" class="btn btn-outline-warning">Editar</a>
+                                    <a asp-controller="Advertisement" asp-action="Delete" asp-route-id="@advertisement.Id" class="btn btn-outline-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements
+@using EMarket.Core.Application.ViewModels.Categories
+@using EMarket.Core.Application.ViewModels.Home;
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Anuncios";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-4 offset-8">
+            <div class="d-flex flex-row justify-content-end">
+                <form method="post" asp-controller="Home" asp-action="SearchByName">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <input class="form-control" name="ArticleName" type="text" placeholder="Articulo" />
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary" type="submit" title="Buscar por nombre">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mb-3">
+            <div class="card shadow-sm h-336">
+                <div class="card-header bg-dark text-white">
+                    <h5>Filtro</h5>
+                </div>
+                <div class="card-body">
+                    <div class="card-header mb-3 p-0 bg-white">
+                        <h6>Categorías</h6>
+                    </div>
+
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        <div class="restrict-size">
+                            <div class="mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" value="null" id="all" type="checkbox" name="CategoryIds" />
+                                    <label class="form-check-label" for="all">Todas</label>
+                                </div>
+                            </div>
+
+                            @foreach (CategoryViewModel category in Model.Categories)
+                            {
+                                <div class="form-check w-100 mb-2">
+                                    <input class="form-check-input" id="category-@category.Id" value="@category.Id" name="CategoryIds" type="checkbox" />
+                                    <label class="form-check-label" for="category-@category.Id">@category.Name</label>
+                                </div>
+                            }
+                        </div>
+
+                        <button class="btn btn-primary w-100 align-items-end" type="submit">Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @if (Model == null || Model.Advertisements.Count() == 0)
+        {
+            <div class="col-4 m-4">
+                <h4>No hay anuncios</h4>
+            </div>
+        }
+        else
+        {
+            foreach (AdvertisementViewModel advertisement in Model.Advertisements)
+            {
+                <div class="col-4 mb-3">
+                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@advertisement.Id" class="text-black" style="text-decoration:none;">
+                        <div class="card shadow-sm">
+                            <img class="bd-placeholder-img card-img-top advertisement-image-height" src="@advertisement.ImageUrl1">
+
+                            <div class="card-body">
+                                <strong>@advertisement.Name</strong>
+                                <p>@advertisement.Description</p>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <p>@advertisement.CategoryName</p>
+                                    <p class="text-black">$@advertisement.Price</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

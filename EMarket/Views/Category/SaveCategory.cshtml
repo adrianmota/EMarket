@@ -1,0 +1,37 @@
+﻿@using EMarket.Core.Application.ViewModels.Categories
+@model SaveCategoryViewModel
+@{
+    bool editMode = !(Model.Id == 0);
+    string title = editMode ? "Editar categoría" : "Crear categoría";
+    string action = editMode ? "Edit" : "Create";
+    ViewData["Title"] = title;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-black text-white">
+                    <h4 class="text-center">@title</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Category" asp-action="@action">
+                        @Html.ValidationSummary(false, "", new {@class = "text-danger"})
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Nombre</label>
+                            <input asp-for="Name" class="form-control"/>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Descripción</label>
+                            <input asp-for="Description" class="form-control"/>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Guardar</button>
+                        <a class="btn btn-secondary" asp-controller="Category" asp-action="Index">Volver atrás</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

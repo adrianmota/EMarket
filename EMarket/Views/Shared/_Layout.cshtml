@@ -1,0 +1,63 @@
+﻿@using EMarket.Core.Application.Helpers
+@using EMarket.Core.Application.ViewModels.Users
+@using Microsoft.AspNetCore.Http
+@{
+    IHttpContextAccessor httpContextAccessor = new HttpContextAccessor();
+    UserViewModel user = httpContextAccessor.HttpContext.Session.Get<UserViewModel>("user");
+    string controller = (user == null) ? "User" : "Home";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EMarket</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        @if (user != null)
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand text-white" asp-controller="@controller" asp-action="Index"><strong>EMarket</strong></a>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Advertisement" asp-action="Index" title="Mis anuncios">Mis anuncios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Category" asp-action="Index" title="Categorías">Categorías</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="User" asp-action="LogOut">Cerrar sesión</a>
+                            </li>
+                        </ul>
+                        <div>
+                            <strong>@user.FirstName @user.LastName</strong>
+                        </div>
+
+                    </div>
+                </div>
+
+            </nav>
+        }
+    </header>
+    <div class="container bg-gradient">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - <i>EMarket</i>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
