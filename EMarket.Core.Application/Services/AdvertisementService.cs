@@ -5,10 +5,8 @@ using EMarket.Core.Application.ViewModels.Advertisements;
 using EMarket.Core.Application.ViewModels.Users;
 using EMarket.Core.Domain.Entities;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EMarket.Core.Application.Services

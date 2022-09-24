@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using EMarket.Core.Application.Interfaces.Services;
-using WebApp.EMarket.Middlewares;
 using EMarket.Core.Application.ViewModels.Home;
-using System.Collections.Generic;
+using WebApp.EMarket.Middlewares;
 
 namespace EMarket.Controllers
 {

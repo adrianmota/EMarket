@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using EMarket.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EMarket.Core.Application;
 using Microsoft.AspNetCore.Http;
+using EMarket.Core.Application;
+using EMarket.Infrastructure.Persistence;
 using WebApp.EMarket.Middlewares;
 
 namespace EMarket

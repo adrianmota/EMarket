@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EMarket.Core.Application.Helpers
 {
@@ -11,12 +7,13 @@ namespace EMarket.Core.Application.Helpers
     {
         public static string ComputeSHA256Hash(string password)
         {
-            using(SHA256 sha256 = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 StringBuilder builder = new();
 
-                for (var i = 0; i < bytes.Length; i++) {
+                for (var i = 0; i < bytes.Length; i++)
+                {
                     builder.Append(bytes[i].ToString("x2"));
                 }
 
